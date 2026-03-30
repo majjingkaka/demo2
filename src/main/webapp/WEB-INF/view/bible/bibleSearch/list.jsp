@@ -336,27 +336,27 @@ document.addEventListener("keydown", function(event) {
         	</div>
         	
 			<div style="text-align: center;">
-              <select class="form-select w-auto mx-1" name="bookAf" id="bookAf" onchange="bookOrdrListChange(this);" aria-label="Default select example" style="display: inline-block;">
+              <select class="form-select w-auto mx-1 form-select-sm" name="bookAf" id="bookAf" onchange="bookOrdrListChange(this);" aria-label="Default select example" style="display: inline-block;">
                 <c:forEach var="code" items="${selectBibleBookAfList }" varStatus="status">
 					<option value="${code.bookAf }" <c:if test="${code.bookAf eq bookAf }">selected="selected"</c:if>>${code.bookAfNm }</option>
 				</c:forEach>
               </select>
             
             
-				<select class="form-select w-auto mx-1" name="bookSeq" id="bookSeq" onchange="bookOrdrJangCtChange(this);" aria-label="Default select example" style="display: inline-block;">
+				<select class="form-select w-auto mx-1 form-select-sm" name="bookSeq" id="bookSeq" onchange="bookOrdrJangCtChange(this);" aria-label="Default select example" style="display: inline-block;">
 					<c:forEach var="code" items="${selectBibleBookOrdrList }" varStatus="status">
 						<option value="${code.bookSeq }" <c:if test="${code.bookSeq eq bookSeq }">selected="selected"</c:if>>${code.bookNm }</option>
 					</c:forEach>
 				</select>
 				
-				<select class="form-select w-auto mx-1" name="chapter" id="chapter" onchange="bookOrdrJurCtChange(this,1);" aria-label="Default select example" style="display: inline-block;">
+				<select class="form-select w-auto mx-1 form-select-sm" name="chapter" id="chapter" onchange="bookOrdrJurCtChange(this,1);" aria-label="Default select example" style="display: inline-block;">
 					<option value="">전체</option>
 					<c:forEach var="data" begin="1" end="${fn:length(selectBibleSearchJangCt)}" varStatus="status">
 						<option value="${data}" <c:if test="${data eq chapter}">selected="selected"</c:if>>${data}</option>	
 					</c:forEach>
 				</select>
 
-				<select class="form-select w-auto mx-1" name="verse" id="verse" aria-label="Default select example" style="display: inline-block;">
+				<select class="form-select w-auto mx-1 form-select-sm" name="verse" id="verse" aria-label="Default select example" style="display: inline-block;">
 					<option value="">전체</option>
 				</select>
 			</div>
@@ -366,19 +366,19 @@ document.addEventListener("keydown", function(event) {
 			<div style="text-align: center; margin-top: 10px;">
 				<div id="d1" style="display: none;">
 					<span >~</span>
-					<select class="form-select w-auto mx-1" name="chapter2" id="chapter2" onchange="bookOrdrJurCtChange(this,2);" aria-label="Default select example" style="display: inline-block;">
+					<select class="form-select w-auto mx-1 form-select-sm" name="chapter2" id="chapter2" onchange="bookOrdrJurCtChange(this,2);" aria-label="Default select example" style="display: inline-block;">
 						<option value="">전체</option>
 						<c:forEach var="data" begin="1" end="${fn:length(selectBibleSearchJangCt)}" varStatus="status">
 							<option value="${data}" <c:if test="${data eq chapter}">selected="selected"</c:if>>${data}</option>	
 						</c:forEach>
 					</select>
 
-					<select class="form-select w-auto mx-1" name="verse2" id="verse2" aria-label="Default select example" style="display: inline-block;">
+					<select class="form-select w-auto mx-1 form-select-sm" name="verse2" id="verse2" aria-label="Default select example" style="display: inline-block;">
 						<option value="">전체</option>
 					</select>
 
 				</div>
-				<input class="form-control w-auto mx-1" type="text" placeholder="검색어" aria-label=".form-control-lg example" id="searchKeyword" name="searchKeyword" size="20" maxlength="20" value="${searchKeyword}" style="display: inline-block;">
+				<input class="form-control w-auto mx-1 form-control-sm" type="text" placeholder="검색어" aria-label=".form-control-lg example" id="searchKeyword" name="searchKeyword" size="10" maxlength="20" value="${searchKeyword}" style="display: inline-block;">
 				<button type="button" class="btn btn-outline-primary btn-sm" onclick="javascript:bibleSearch();" style="margin-top: -5px;">조회</button>
 				<button type="button" class="btn btn-outline-primary btn-sm" onclick="javascript:bibleReset();" style="margin-top: -5px;">초기화</button>
 			</div>
