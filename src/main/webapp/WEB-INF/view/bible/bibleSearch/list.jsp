@@ -317,78 +317,65 @@ document.addEventListener("keydown", function(event) {
 
 
 
-<div class="row">
-	<div class="col-md-12">
-      <div class="card mb-4">
-        <!-- <h5 class="card-header">[말씀 찾기]</h5> -->
-        <div class="card-body">
-			
+<div class="bg-warning-subtle" style="padding: 10px;">
+	<div style="text-align: center;">
+		<div class="form-check form-check-inline mb-3">
+			<input class="form-check-input" type="radio" name="btweenYn" id="btweenN" value="N" <c:if test="${btweenYn eq 'N' }">checked="checked"</c:if> <c:if test="${empty btweenYn}">checked="checked"</c:if> />
+			<label class="form-check-label" for="btweenN">단일지정</label>
+		</div>
+		<div class="form-check form-check-inline">
+			<input class="form-check-input" type="radio" name="btweenYn" id="btweenY" value="Y" <c:if test="${btweenYn eq 'Y' }">checked="checked"</c:if> />
+			<label class="form-check-label" for="btweenY">범위지정</label>
+		</div>	        	
+	</div>
+	
+	<div style="text-align: center;">
+		<select class="form-select w-auto mx-1 form-select-sm" name="bookAf" id="bookAf" onchange="bookOrdrListChange(this);" aria-label="Default select example" style="display: inline-block;">
+		<c:forEach var="code" items="${selectBibleBookAfList }" varStatus="status">
+			<option value="${code.bookAf }" <c:if test="${code.bookAf eq bookAf }">selected="selected"</c:if>>${code.bookAfNm }</option>
+		</c:forEach>
+		</select>
+	
+	
+		<select class="form-select w-auto mx-1 form-select-sm" name="bookSeq" id="bookSeq" onchange="bookOrdrJangCtChange(this);" aria-label="Default select example" style="display: inline-block;">
+			<c:forEach var="code" items="${selectBibleBookOrdrList }" varStatus="status">
+				<option value="${code.bookSeq }" <c:if test="${code.bookSeq eq bookSeq }">selected="selected"</c:if>>${code.bookNm }</option>
+			</c:forEach>
+		</select>
+		
+		<select class="form-select w-auto mx-1 form-select-sm" name="chapter" id="chapter" onchange="bookOrdrJurCtChange(this,1);" aria-label="Default select example" style="display: inline-block;">
+			<option value="">전체</option>
+			<c:forEach var="data" begin="1" end="${fn:length(selectBibleSearchJangCt)}" varStatus="status">
+				<option value="${data}" <c:if test="${data eq chapter}">selected="selected"</c:if>>${data}</option>	
+			</c:forEach>
+		</select>
 
-          	<div style="text-align: center;">
-				<div class="form-check form-check-inline mb-3">
-		          <input class="form-check-input" type="radio" name="btweenYn" id="btweenN" value="N" <c:if test="${btweenYn eq 'N' }">checked="checked"</c:if> <c:if test="${empty btweenYn}">checked="checked"</c:if> />
-		          <label class="form-check-label" for="btweenN">단일지정</label>
-		        </div>
-		        <div class="form-check form-check-inline">
-		          <input class="form-check-input" type="radio" name="btweenYn" id="btweenY" value="Y" <c:if test="${btweenYn eq 'Y' }">checked="checked"</c:if> />
-		          <label class="form-check-label" for="btweenY">범위지정</label>
-		        </div>	        	
-        	</div>
-        	
-			<div style="text-align: center;">
-              <select class="form-select w-auto mx-1 form-select-sm" name="bookAf" id="bookAf" onchange="bookOrdrListChange(this);" aria-label="Default select example" style="display: inline-block;">
-                <c:forEach var="code" items="${selectBibleBookAfList }" varStatus="status">
-					<option value="${code.bookAf }" <c:if test="${code.bookAf eq bookAf }">selected="selected"</c:if>>${code.bookAfNm }</option>
+		<select class="form-select w-auto mx-1 form-select-sm" name="verse" id="verse" aria-label="Default select example" style="display: inline-block;">
+			<option value="">전체</option>
+		</select>
+	</div>
+
+	
+	
+	<div style="text-align: center; margin-top: 10px;">
+		<div id="d1" style="display: none;">
+			<span >~</span>
+			<select class="form-select w-auto mx-1 form-select-sm" name="chapter2" id="chapter2" onchange="bookOrdrJurCtChange(this,2);" aria-label="Default select example" style="display: inline-block;">
+				<option value="">전체</option>
+				<c:forEach var="data" begin="1" end="${fn:length(selectBibleSearchJangCt)}" varStatus="status">
+					<option value="${data}" <c:if test="${data eq chapter}">selected="selected"</c:if>>${data}</option>	
 				</c:forEach>
-              </select>
-            
-            
-				<select class="form-select w-auto mx-1 form-select-sm" name="bookSeq" id="bookSeq" onchange="bookOrdrJangCtChange(this);" aria-label="Default select example" style="display: inline-block;">
-					<c:forEach var="code" items="${selectBibleBookOrdrList }" varStatus="status">
-						<option value="${code.bookSeq }" <c:if test="${code.bookSeq eq bookSeq }">selected="selected"</c:if>>${code.bookNm }</option>
-					</c:forEach>
-				</select>
-				
-				<select class="form-select w-auto mx-1 form-select-sm" name="chapter" id="chapter" onchange="bookOrdrJurCtChange(this,1);" aria-label="Default select example" style="display: inline-block;">
-					<option value="">전체</option>
-					<c:forEach var="data" begin="1" end="${fn:length(selectBibleSearchJangCt)}" varStatus="status">
-						<option value="${data}" <c:if test="${data eq chapter}">selected="selected"</c:if>>${data}</option>	
-					</c:forEach>
-				</select>
+			</select>
 
-				<select class="form-select w-auto mx-1 form-select-sm" name="verse" id="verse" aria-label="Default select example" style="display: inline-block;">
-					<option value="">전체</option>
-				</select>
-			</div>
+			<select class="form-select w-auto mx-1 form-select-sm" name="verse2" id="verse2" aria-label="Default select example" style="display: inline-block;">
+				<option value="">전체</option>
+			</select>
 
-			
-			
-			<div style="text-align: center; margin-top: 10px;">
-				<div id="d1" style="display: none;">
-					<span >~</span>
-					<select class="form-select w-auto mx-1 form-select-sm" name="chapter2" id="chapter2" onchange="bookOrdrJurCtChange(this,2);" aria-label="Default select example" style="display: inline-block;">
-						<option value="">전체</option>
-						<c:forEach var="data" begin="1" end="${fn:length(selectBibleSearchJangCt)}" varStatus="status">
-							<option value="${data}" <c:if test="${data eq chapter}">selected="selected"</c:if>>${data}</option>	
-						</c:forEach>
-					</select>
-
-					<select class="form-select w-auto mx-1 form-select-sm" name="verse2" id="verse2" aria-label="Default select example" style="display: inline-block;">
-						<option value="">전체</option>
-					</select>
-
-				</div>
-				<input class="form-control w-auto mx-1 form-control-sm" type="text" placeholder="검색어" aria-label=".form-control-lg example" id="searchKeyword" name="searchKeyword" size="10" maxlength="20" value="${searchKeyword}" style="display: inline-block;">
-				<button type="button" class="btn btn-outline-primary btn-sm" onclick="javascript:bibleSearch();" style="margin-top: -5px;">조회</button>
-				<button type="button" class="btn btn-outline-primary btn-sm" onclick="javascript:bibleReset();" style="margin-top: -5px;">초기화</button>
-			</div>
-			
-			
-			
-			
-        </div>
-      </div>
-    </div>
+		</div>
+		<input class="form-control w-auto mx-1 form-control-sm" type="text" placeholder="검색어" aria-label=".form-control-lg example" id="searchKeyword" name="searchKeyword" size="10" maxlength="20" value="${searchKeyword}" style="display: inline-block;">
+		<button type="button" class="btn btn-outline-primary btn-sm" onclick="javascript:bibleSearch();" style="margin-top: -5px;">조회</button>
+		<button type="button" class="btn btn-outline-primary btn-sm" onclick="javascript:bibleReset();" style="margin-top: -5px;">초기화</button>
+	</div>
 	
 </div>
 </form>
