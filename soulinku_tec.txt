@@ -1,0 +1,119 @@
+## 기술문서
+
+[깃연동]
+https://choco-life.tistory.com/44
+
+
+[카멜케이스(map처리방식)]
+https://jeongkyun-it.tistory.com/154
+https://herojoon-dev.tistory.com/6
+
+
+
+[스프링부트 기동킬]
+nohup java -jar soulinku-0.0.1-SNAPSHOT.war &
+CURRENT_PID=$(pgrep -f soulinku-0.0.1-SNAPSHOT.war)
+echo "$CURRENT_PID"
+sudo kill 6499
+
+[자바설치]
+https://loginshin.tistory.com/84
+update-alternatives --config java
+dnf list java*
+dnf install java-17-openjdk.x86_64
+java --version
+
+[자바위치확인및 환경설정]
+https://chobopark.tistory.com/383
+which java
+readlink -f /usr/bin/java
+
+모든 사용자 적용(root계정) : 
+/etc/profile 
+/etc/bashrc 
+
+해당 사용자만 적용(사용자계정) :
+~/.bashrc
+~/.bash_profile
+
+export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.432.b06-2.el9.x86_64/jre/
+export PATH=$JAVA_HOME/bin:$PATH
+export CLASS_PATH=$JAVA_HOME/lib:$CLASS_PATH
+
+
+/usr/lib/jvm/java-17-openjdk-17.0.14.0.7-2.el9.x86_64/bin/java
+source /etc/profile
+
+
+
+
+145.223.19.82
+서버 : AAssddffgg11@@
+서버 sql : soulinku/aassddffgg11$$
+서버 sql : soulinku/aassdd11$
+local sql : doochuli2/aassdd11$
+
+mysqldump -u root -p egov bible_book_af > /dump/dump_book_af_241026.sql
+mysqldump -u soulinku -p egov bible_book_af < /was/dump/dump_book_af_241026.sql
+
+ssl 인증서발급 기관
+https://y-dev.tistory.com/44
+sudo certbot certonly --standalone
+
+
+<SSLHostConfig>
+<Certificate certificateKeyFile="/etc/letsencrypt/live/soulinku.com/privkey.pem"
+        certificateFile="/etc/letsencrypt/live/soulinku.com/cert.pem"
+        certificateChainFile="/etc/letsencrypt/live/soulinku.com/fullchain.pem"
+        type="RSA" />
+</SSLHostConfig>
+
+[root@soulinku conf]# sudo certbot certonly --standalone
+Saving debug log to /var/log/letsencrypt/letsencrypt.log
+Please enter the domain name(s) you would like on your certificate (comma and/or
+space separated) (Enter 'c' to cancel): soulinku.com
+Requesting a certificate for soulinku.com
+
+Successfully received certificate.
+Certificate is saved at: /etc/letsencrypt/live/soulinku.com-0001/fullchain.pem
+Key is saved at:         /etc/letsencrypt/live/soulinku.com-0001/privkey.pem
+This certificate expires on 2025-05-02.
+These files will be updated when the certificate renews.
+Certbot has set up a scheduled task to automatically renew this certificate in the background.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+If you like Certbot, please consider supporting our work by:
+ * Donating to ISRG / Let's Encrypt:   https://letsencrypt.org/donate
+ * Donating to EFF:                    https://eff.org/donate-le
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+openssl pkcs12 -export -in fullchain.pem -inkey privkey.pem -out sslKey.p12 -name tomcat -CAfile chain.pem -caname root
+/etc/letsencrypt/live/soulinku.com-0001/sslKey.p12 / aassddffgg11$$
+
+
+
+
+
+https://khj93.tistory.com/entry/Spring-Batch%EB%9E%80-%EC%9D%B4%ED%95%B4%ED%95%98%EA%B3%A0-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0#google_vignette
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
