@@ -23,6 +23,7 @@ public class HelloController {
 
     @GetMapping("/hello")
     public String hello() {
+        log.info("HelloController hello call...");
         return "Hello, Spring Boot in VS Code!";
     }
 

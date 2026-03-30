@@ -22,8 +22,11 @@ public class MainController {
 	@Autowired
 	MainService mainService;
 
-    @RequestMapping("/")
+    @RequestMapping("/index.do")
 	public ModelAndView index() {
+		log.info("MainController index call...");
+
+
 		log.info("Info level log message / 정보 메세지 예시");
 		log.error("Error level log message / 오류 메세지 예시");
 

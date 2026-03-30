@@ -11,6 +11,7 @@
 	<groupId>com.soulinku</groupId>
 	<artifactId>demo2</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
 	<name>demo2</name>
 	<description/>
 	<url/>
@@ -37,12 +38,12 @@
 
 	<dependencies>
 
-		<!--
+		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
-		-->
+		
 		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -73,6 +74,18 @@
 			<artifactId>spring-boot-starter-tomcat</artifactId>
 			<scope>provided</scope>
 		</dependency>
+		
+		<!-- 
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency> -->
+
+		<dependency>
+			<groupId>org.apache.tomcat.embed</groupId>
+			<artifactId>tomcat-embed-jasper</artifactId>
+		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/jakarta.servlet.jsp.jstl/jakarta.servlet.jsp.jstl-api -->
 		<dependency>
@@ -97,10 +110,7 @@
 			<version>3.0.1</version>
 		</dependency>
 
-        <dependency>
-			<groupId>org.apache.tomcat.embed</groupId>
-			<artifactId>tomcat-embed-jasper</artifactId>
-		</dependency>
+        
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

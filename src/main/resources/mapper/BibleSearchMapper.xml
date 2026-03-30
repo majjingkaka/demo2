@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.soulinku.demo2.mapper.BibleSearchMapper">
+
+    
+    
+    <select id="selectBibleBookAfList" resultType="CamelHashMap">
+	/* BibleSearchMapper.selectBibleBookAfList */
+		SELECT * 
+		FROM BIBLE_BOOK_AF
+		ORDER BY BOOK_SEQ
+	</select>
+
+
+    <select id="selectBibleBookOrdrList" parameterType="bibleDto" resultType="CamelHashMap">
+	/* BibleSearchMapper.selectBibleBookOrdrList */
+		SELECT * 
+		FROM BIBLE_BOOK_ORDR 
+		WHERE 1=1
+		<if test="bookAf != null and bookAf != ''">
+			AND BOOK_AF = #{bookAf}
+		</if>
+		<if test="bookAf == null or bookAf == ''">
+			AND BOOK_AF = 'A'
+		</if>
+		ORDER BY BOOK_SEQ
+	</select>
+
+
+    <select id="selectBibleSearchList_back" parameterType="bibleDto" resultType="CamelHashMap">
+	/* BibleSearchMapper.selectBibleSearchList */
+		SELECT * 
+		FROM BIBLE_BOOK_ORDR A LEFT OUTER JOIN BIBLE_KORHRV B ON A.BOOK_SEQ = B.BOOK_SEQ
+		WHERE 1=1
+		AND A.BOOK_AF = #{bookAf}
+		AND A.BOOK_SEQ = #{bookSeq}
+		<if test="btweenYn != null and btweenYn != ''">
+			<if test="btweenYn == 'Y'.toString()">
+				<if test="chapter != null and chapter != ''">
+					AND B.CHAPTER <![CDATA[>=]]> #{chapter}
+				</if>
+				<if test="chapter2 != null and chapter2 != ''">
+					AND B.CHAPTER <![CDATA[<=]]> #{chapter2}
+				</if>
+				<if test="verse != null and verse != ''">
+					AND B.VERSE <![CDATA[>=]]> #{verse}
+				</if>
+				<if test="verse2 != null and verse2 != ''">
+					AND B.VERSE <![CDATA[<=]]> #{verse2}
+				</if>
+			</if>
+			<if test="btweenYn == 'N'.toString()">
+				<if test="chapter != null and chapter != ''">
+					AND B.CHAPTER = #{chapter}
+				</if>
+				<if test="verse != null and verse != ''">
+					AND B.VERSE = #{verse}
+				</if>
+			</if>
+		</if>
+		
+		<if test="searchKeyword != null and searchKeyword != ''">
+		AND B.CONTENT LIKE CONCAT ('%', #{searchKeyword},'%')
+		</if>
+		ORDER BY B.CHAPTER, B.VERSE
+	</select>
+
+
+	<select id="selectBibleSearchList" parameterType="bibleDto" resultType="CamelHashMap">
+	/* BibleSearchMapper.selectBibleSearchList */
+		select * from 
+		(
+		SELECT a.book_seq, a.book_nm, a.book_af, b.chapter, b.verse, b.content, CAST(concat(chapter,lpad(verse,3,0)) AS UNSIGNED) as se_ordr
+		FROM BIBLE_BOOK_ORDR A LEFT OUTER JOIN BIBLE_KORHRV B ON A.BOOK_SEQ = B.BOOK_SEQ
+		) a
+		WHERE 1=1
+		AND A.BOOK_AF = #{bookAf}
+		AND A.BOOK_SEQ = #{bookSeq}
+		<if test="btweenYn != null and btweenYn != ''">
+			<if test="btweenYn == 'Y'.toString()">
+				and a.se_ordr between concat(nvl(nullif(#{chapter},''),1),lpad(nvl(nullif(#{verse},''),1),3,0)) and concat(nvl(nullif(#{chapter2},''),200),lpad(nvl(nullif(#{verse2},''),200),3,0))
+			</if>
+			<if test="btweenYn == 'N'.toString()">
+				<if test="chapter != null and chapter != ''">
+					AND a.CHAPTER = #{chapter}
+				</if>
+				<if test="verse != null and verse != ''">
+					AND a.VERSE = #{verse}
+				</if>
+			</if>
+		</if>
+		<if test="searchKeyword != null and searchKeyword != ''">
+		AND a.CONTENT LIKE CONCAT ('%', #{searchKeyword},'%')
+		</if>
+		ORDER BY a.se_ordr
+	</select>
+
+	<select id="selectBibleSearchJangCt" parameterType="bibleDto" resultType="CamelHashMap">
+	/* BibleSearchMapper.selectBibleSearchJangCt */
+		SELECT BOOK_SEQ, CHAPTER, COUNT(VERSE) AS VERSE_CT 
+		FROM BIBLE_KORHRV
+		WHERE 1=1
+		AND BOOK_SEQ = #{bookSeq}
+		<if test="chapter != null and chapter != ''">
+		AND CHAPTER = #{chapter}
+		</if>
+		GROUP BY BOOK_SEQ, CHAPTER
+	</select>
+
+
+
+
+</mapper>
