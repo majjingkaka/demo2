@@ -268,7 +268,7 @@ function bibleSearch(){
         	
         	if(length > 0) {
         		
-        		innerHtml += '<ul>';
+        		innerHtml += '<ul style="padding: 10px;">';
         		$.each(data['selectBibleSearchList'], function(i) {
         			content = data['selectBibleSearchList'][i].content;
         			chapter = data['selectBibleSearchList'][i].chapter;
