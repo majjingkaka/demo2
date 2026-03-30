@@ -200,7 +200,8 @@ function btweenYn123(V){
 }
 
 function bibleReset(){
-	document.location.href = "/bible/bibleSearch/list.do";
+	//document.location.href = "/bible/bibleSearch/list.do";
+	document.location.href = "/";
 }
 
 function bibleSearch(){
@@ -307,7 +308,9 @@ document.addEventListener("keydown", function(event) {
 
 </script>
 
-<h4 class="fw-bold py-3 mb-4" style="text-align: center;"><span class="text-muted fw-light"></span> 말씀 찾기</h4>
+<img src="/static/bible/img/top/bible-top-01.png" style="width: 100%;">
+
+<!-- <h4 class="fw-bold py-3 mb-4" style="text-align: center;"><span class="text-muted fw-light"></span> 말씀 찾기</h4> -->
 
 <form id="search" name="search" method="post" action='#' onSubmit='return bibleSearch()' >
 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
