@@ -11,7 +11,7 @@
 	<groupId>com.soulinku</groupId>
 	<artifactId>demo2</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<name>demo2</name>
 	<description/>
 	<url/>
@@ -82,27 +82,27 @@
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/jakarta.servlet.jsp.jstl/jakarta.servlet.jsp.jstl-api -->
-		<dependency>
+		<!-- <dependency>
 			<groupId>jakarta.servlet.jsp.jstl</groupId>
 			<artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
 			<version>3.0.0</version>
-		</dependency>
+		</dependency> -->
 		
 
 		<!-- https://mvnrepository.com/artifact/jakarta.servlet/jakarta.servlet-api -->
-		<dependency>
+		<!-- <dependency>
 			<groupId>jakarta.servlet</groupId>
 			<artifactId>jakarta.servlet-api</artifactId>
 			<version>6.0.0</version>
 			<scope>provided</scope>
-		</dependency>
+		</dependency> -->
 
 		<!-- https://mvnrepository.com/artifact/org.glassfish.web/jakarta.servlet.jsp.jstl -->
-		<dependency>
+		<!-- <dependency>
 			<groupId>org.glassfish.web</groupId>
 			<artifactId>jakarta.servlet.jsp.jstl</artifactId>
 			<version>3.0.1</version>
-		</dependency>
+		</dependency> -->
 
         
 
@@ -189,7 +189,7 @@
 			<scope>compile</scope>
 		</dependency>
 
-		
+
 	</dependencies>
 
 	<build>

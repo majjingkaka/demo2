@@ -13,7 +13,7 @@
     <meta name="description" content="" />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="/static/bible/img/favicon/favicon.ico" />
+    <link rel="icon" type="image/x-icon" th:href="@{/bible/img/favicon/favicon.ico}" />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -21,16 +21,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet" />
 
     <!-- Icons. Uncomment required icon fonts -->
-    <link rel="stylesheet" href="/static/sneat/assets/vendor/fonts/boxicons.css" />
+    <!-- <link rel="stylesheet" href="@{/sneat/assets/vendor/fonts/boxicons.css}" /> -->
 
-    <link type="text/css" href="/static/Bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link type="text/css" href="/static/css/jqueryui.css" rel="stylesheet">
+    <link type="text/css" th:href="@{/bootstrap-5.3.8/dist/css/bootstrap.min.css}" rel="stylesheet">
+    <link type="text/css" th:href="@{/css/jqueryui.css}" rel="stylesheet">
 
 
-    <script src="/static/js/jquery.js"></script>
-    <script src="/static/js/jqueryui.js"></script>
-    <script src="/static/Bootstrap/js/bootstrap.bundle.min.js" ></script>
-    <script src="/static/jslibrary/miya_validator.js"></script>
+    <script th:src="@{/js/jquery.js}"></script>
+    <script th:src="@{/js/jqueryui.js}"></script>
+    <script th:src="@{/bootstrap-5.3.8/dist/js/bootstrap.bundle.min.js}" ></script>
+    <script th:src="@{/jslibrary/miya_validator.js}"></script>
 
 </head>
 </html>
