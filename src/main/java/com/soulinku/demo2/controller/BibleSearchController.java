@@ -28,7 +28,8 @@ public class BibleSearchController {
 	BibleSearchService bibleSearchService;
 
     //@RequestMapping("/bible/bibleSearch/list.do")
-	@RequestMapping("/")
+	//@RequestMapping("/bible/bibleSearch/list.do")
+	@RequestMapping("/bible/search/list")
 	public String list(HttpServletRequest request
 		, HttpServletResponse response
 		, ModelMap model
@@ -52,12 +53,13 @@ public class BibleSearchController {
 
 			
 
-            return "bible/bibleSearch/list";
+            return "pages/bible/search/list";
             
     }
     
     @ResponseBody
-	@RequestMapping(value = "/bible/bookOrdrListChange.do" )
+	//@RequestMapping(value = "/bible/bookOrdrListChange.do" )
+	@RequestMapping(value = "/bible/bookOrdrListChange" )
 	public ModelAndView bookOrdrListChange(
 			//@RequestBody HashMap<String, Object> map
 			HttpServletRequest request
@@ -90,7 +92,8 @@ public class BibleSearchController {
     
     //https://cornswrold.tistory.com/316
 	@ResponseBody
-	@RequestMapping(value = "/bible/bibleSearch.do" )
+	//@RequestMapping(value = "/bible/bibleSearch.do" )
+	@RequestMapping(value = "/bible/search" )
 	public ModelAndView bibleSearch(HttpServletRequest request
 			, HttpServletResponse response
 			, ModelMap model
@@ -131,7 +134,8 @@ public class BibleSearchController {
 
 
 	@ResponseBody
-	@RequestMapping(value = "/bible/bookOrdrJangCtChange.do" )
+	//@RequestMapping(value = "/bible/bookOrdrJangCtChange.do" )
+	@RequestMapping(value = "/bible/bookOrdrJangCtChange" )
 	public ModelAndView bookOrdrJangCtChange(
 			//@RequestBody HashMap<String, Object> map
 			HttpServletRequest request

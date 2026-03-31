@@ -22,8 +22,8 @@ public class MainController {
 	@Autowired
 	MainService mainService;
 
-    @RequestMapping("/index.do")
-	public ModelAndView index() {
+    @RequestMapping("/")
+	public String index() {
 		log.info("MainController index call...");
 
 
@@ -46,8 +46,9 @@ public class MainController {
 
 
 
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("index");
-		return mv;
+		//ModelAndView mv = new ModelAndView();
+		//mv.setViewName("layout/bibleMain");
+		//return mv;
+		return "pages/index";
 	}
 }

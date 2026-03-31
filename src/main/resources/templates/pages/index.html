@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<!-- Default Layout Import-->
+<html lang="en" 
+xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+layout:decorate="~{layout/default}" layout:fragment="Content"
+>
+
+
+    <head>
+
+        <style th:inline="css" type="text/css">
+            /* body {
+                margin: 30px;
+                border: 1px solid red;
+            } */
+        </style>
+
+        <style>
+            body {
+                margin: 0;
+                font-family: 'Noto Sans KR', sans-serif;
+                background: #f5f7fb;
+                text-align: center;
+            }
+
+            .container {
+                max-width: 800px;
+                margin: 0 auto;
+                padding: 20px;
+            }
+
+            /* 상단 비주얼 */
+            .hero {
+                margin-top: 20px;
+            }
+
+            .hero img {
+                width: 100%;
+                max-width: 500px;
+            }
+
+            .title {
+                font-size: 24px;
+                margin: 20px 0;
+                font-weight: bold;
+            }
+
+            /* 메뉴 */
+            .menu {
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+                margin-top: 20px;
+            }
+
+            .menu-item {
+                background: white;
+                padding: 15px;
+                border-radius: 15px;
+                font-size: 18px;
+                font-weight: 500;
+                border: 2px solid #ddd;
+                cursor: pointer;
+                transition: all 0.2s ease;
+            }
+
+            .menu-item:hover {
+                background: #fffae6;
+                transform: translateY(-3px);
+                border-color: #ffd54f;
+            }
+
+            /* 아이콘 */
+            .menu-item span {
+                margin-right: 8px;
+            }
+            
+            .menu-item a {
+                text-decoration: none; /* 밑줄 제거 */
+                color: inherit;        /* 부모 글자색 그대로 사용 */
+            }
+        </style>
+
+    </head>
+
+    <body>
+        <div class="container">
+                
+            <!-- <h1 style="height:500px;">Content 영역입니다...</h1> -->
+            <!-- 귀여운 메인 이미지 -->
+            <!-- <div class="hero">
+                <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="귀여운 성경 이미지">
+            </div> -->
+
+            <div class="title">📖 말씀과 함께하는 하루</div>
+
+            <!-- 메뉴 -->
+            <div class="menu">
+                <!-- /bible/search/list -->
+                <div class="menu-item"><a href="/bible/search/list">🔍 말씀 찾기</a></div>
+                <div class="menu-item">🎵 찬송가</div>
+                <div class="menu-item">📢 광고</div>
+                <div class="menu-item">🙏 오늘의 말씀</div>
+                <div class="menu-item">❤️ 즐겨찾기</div>
+                <div class="menu-item">⚙ 설정</div>
+            </div>
+
+        </div>
+
+
+    </body>
+</html>
