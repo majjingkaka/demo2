@@ -70,29 +70,29 @@
 	/* BibleSearchMapper.selectBibleSearchList */
 		select * from 
 		(
-		SELECT a.book_seq, a.book_nm, a.book_af, b.chapter, b.verse, b.content, CAST(concat(chapter,lpad(verse,3,0)) AS UNSIGNED) as se_ordr
+		SELECT A.book_seq, A.book_nm, A.book_af, B.chapter, B.verse, B.content, CAST(concat(chapter,lpad(B.verse,3,0)) AS UNSIGNED) as se_ordr
 		FROM BIBLE_BOOK_ORDR A LEFT OUTER JOIN BIBLE_KORHRV B ON A.BOOK_SEQ = B.BOOK_SEQ
-		) a
+		) A
 		WHERE 1=1
 		AND A.BOOK_AF = #{bookAf}
 		AND A.BOOK_SEQ = #{bookSeq}
 		<if test="btweenYn != null and btweenYn != ''">
 			<if test="btweenYn == 'Y'.toString()">
-				and a.se_ordr between concat(nvl(nullif(#{chapter},''),1),lpad(nvl(nullif(#{verse},''),1),3,0)) and concat(nvl(nullif(#{chapter2},''),200),lpad(nvl(nullif(#{verse2},''),200),3,0))
+				and A.se_ordr between concat(nvl(nullif(#{chapter},''),1),lpad(nvl(nullif(#{verse},''),1),3,0)) and concat(nvl(nullif(#{chapter2},''),200),lpad(nvl(nullif(#{verse2},''),200),3,0))
 			</if>
 			<if test="btweenYn == 'N'.toString()">
 				<if test="chapter != null and chapter != ''">
-					AND a.CHAPTER = #{chapter}
+					AND A.CHAPTER = #{chapter}
 				</if>
 				<if test="verse != null and verse != ''">
-					AND a.VERSE = #{verse}
+					AND A.VERSE = #{verse}
 				</if>
 			</if>
 		</if>
 		<if test="searchKeyword != null and searchKeyword != ''">
-		AND a.CONTENT LIKE CONCAT ('%', #{searchKeyword},'%')
+		AND A.CONTENT LIKE CONCAT ('%', #{searchKeyword},'%')
 		</if>
-		ORDER BY a.se_ordr
+		ORDER BY A.se_ordr
 	</select>
 
 	<select id="selectBibleSearchJangCt" parameterType="bibleDto" resultType="CamelHashMap">
