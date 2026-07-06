@@ -105,7 +105,7 @@ https://khj93.tistory.com/entry/Spring-Batch%EB%9E%80-%EC%9D%B4%ED%95%B4%ED%95%9
 
 
 
-
+nohup java -jar /data/scl/demo2-0.0.1-SNAPSHOT.jar &
 
 
 
